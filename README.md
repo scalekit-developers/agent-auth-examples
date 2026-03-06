@@ -10,10 +10,11 @@ Scalekit Agent Auth handles the full OAuth lifecycle — authorization, token st
 
 ## Examples
 
-| Language | Connector | File |
-|----------|-----------|------|
-| Python | Gmail | [python/google_agent.py](python/google_agent.py) |
-| Python | Google Calendar | [python/google_calendar_agent.py](python/google_calendar_agent.py) |
+| Language | Use Case | Connector(s) | File |
+|----------|----------|--------------|------|
+| Python | AI Email Triage & Draft Replies | Gmail | [python/email_triage_agent.py](python/email_triage_agent.py) |
+| Python | Meeting Scheduler | Google Calendar + Gmail | [python/meeting_scheduler_agent.py](python/meeting_scheduler_agent.py) |
+| Python | Daily Briefing / Morning Digest | Gmail + Google Calendar | [python/daily_briefing_agent.py](python/daily_briefing_agent.py) |
 
 ## Getting Started
 
@@ -27,25 +28,49 @@ cp .env.example .env
 ### 2. Install dependencies
 
 ```bash
-# Python
-pip install scalekit-sdk-python python-dotenv requests
+cd python
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
 ### 3. Run an example
 
 ```bash
-python python/google_agent.py
-python python/google_calendar_agent.py
+python email_triage_agent.py
+python meeting_scheduler_agent.py
+python daily_briefing_agent.py
 ```
 
-## Dashboard Setup
+## Dashboard Setup (required for all connectors)
 
-> Gmail works out of the box. All other connectors require a one-time setup.
+All scripts require a one-time connection setup in the Scalekit Dashboard before running.
 
-For Google Calendar (and other connectors):
 1. Go to **Scalekit Dashboard → Agent Auth → Connections**
 2. Click **+ Create Connection**
-3. Select the connector and set a **Connection Name** (e.g. `google-calendar`)
+3. Select the connector and set the **Connection Name** exactly as shown below:
+
+| Connector | Connection Name |
+|-----------|----------------|
+| Gmail | `gmail` |
+| Google Calendar | `googlecalendar` |
+
 4. Click **Save**
 
-The Connection Name must match the `connection_name` used in your code.
+> The Connection Name must match the `connection_name` value in the script exactly.
+
+## First-Run Authorization
+
+The first time you run a script, the user hasn't authorized access yet. The script will print an authorization link and wait:
+
+```
+Authorize access here: https://your-env.scalekit.dev/magicLink/...
+Press Enter after completing authorization...
+```
+
+1. Open the link in your browser
+2. Sign in with the Google account you want to connect
+3. Grant the requested permissions
+4. Return to the terminal and press **Enter**
+
+On all subsequent runs, Scalekit uses the stored token (auto-refreshed as needed) and skips the authorization step entirely.
