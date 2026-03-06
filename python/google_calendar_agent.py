@@ -38,7 +38,7 @@ sk = scalekit.client.ScalekitClient(
 actions = sk.actions
 
 USER_ID   = "user_123"            # Replace with your actual user identifier
-CONNECTOR = "google-calendar"     # Must match the Connection Name in the dashboard
+CONNECTOR = "googlecalendar"     # Must match the Connection Name in the dashboard
 
 # ---------------------------------------------------------------------------
 # 2. Get or create a connected account for this user
