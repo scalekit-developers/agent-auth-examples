@@ -1,5 +1,5 @@
 """
-validate_scalekit_optimized_tools_flow.py
+scalekit_optimized_tools_flow.py
 ---------------------------
 Verifies the code snippets in scalekit-optimized-tools.mdx, steps 1–6.
 
@@ -12,7 +12,7 @@ Checkpoints:
   ✅ Step 6: Anthropic LLM loop via LiteLLM proxy completes with at least one tool_use
 
 Run (from repo root):
-    python python/validate_scalekit_optimized_tools_flow.py
+    python python/scalekit_optimized_tools_flow.py
 
 Required env vars (.env at repo root):
     SCALEKIT_ENVIRONMENT_URL  SCALEKIT_CLIENT_ID  SCALEKIT_CLIENT_SECRET
@@ -173,7 +173,7 @@ try:
     actions.execute_tool(
         tool_name=known_tool_name,
         tool_input={"max_results": 1},
-        identifier="__verify_nonexistent_user_xyz__",
+        identifier="__missing_user_xyz__",
     )
     fail("Expected ScalekitNotFoundException — got success instead")
 except ScalekitNotFoundException as e:

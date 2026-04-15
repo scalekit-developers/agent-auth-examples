@@ -1,5 +1,5 @@
 /**
- * validate-scalekit-optimized-tools-flow.js
+ * scalekit-optimized-tools-flow.js
  * --------------------------
  * Verifies the code snippets in scalekit-optimized-tools.mdx, steps 1–6.
  *
@@ -12,7 +12,7 @@
  *   ✅ Step 6: Anthropic LLM loop via LiteLLM proxy completes with at least one tool_use
  *
  * Run (from javascript/ directory):
- *   node agents/validate-scalekit-optimized-tools-flow.js
+ *   node agents/scalekit-optimized-tools-flow.js
  *
  * Required env vars (.env at repo root, loaded via path override):
  *   SCALEKIT_ENVIRONMENT_URL  SCALEKIT_CLIENT_ID  SCALEKIT_CLIENT_SECRET
@@ -197,7 +197,7 @@ try {
   await actions.executeTool({
     toolName: knownToolName,
     toolInput: { maxResults: 1 },
-    identifier: '__verify_nonexistent_user_xyz__',
+    identifier: '__missing_user_xyz__',
   });
   fail('Expected ScalekitNotFoundException — got success instead');
 } catch (err) {
