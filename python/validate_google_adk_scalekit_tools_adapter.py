@@ -1,5 +1,5 @@
 """
-verify_google_adk_adapter.py
+validate_google_adk_scalekit_tools_adapter.py
 -----------------------------
 Verifies the Google ADK adapter section (step 7) in scalekit-optimized-tools.mdx.
 
@@ -8,7 +8,7 @@ invokes an Agent using the LiteLlm wrapper (no Gemini key needed — routes
 through the LiteLLM proxy).
 
 Run (from repo root):
-    python python/verify_google_adk_adapter.py
+    python python/validate_google_adk_scalekit_tools_adapter.py
 
 Required env vars (.env at repo root):
     SCALEKIT_ENVIRONMENT_URL  SCALEKIT_CLIENT_ID  SCALEKIT_CLIENT_SECRET
@@ -66,7 +66,7 @@ print(f"  ✅ actions.google.get_tools returned {len(gmail_tools)} tools: "
 
 # Build agent using LiteLlm wrapper (routes to LiteLLM proxy)
 gmail_agent = Agent(
-    name="verify_gmail_agent",
+    name="validate_gmail_agent",
     model=LiteLlm(model=MODEL_NAME),
     description="Gmail assistant for verification",
     instruction="You are a helpful Gmail assistant. Use the available tools to answer questions about emails.",
@@ -77,13 +77,13 @@ gmail_agent = Agent(
 async def run_agent(prompt: str) -> str:
     session_service = InMemorySessionService()
     session = await session_service.create_session(
-        app_name="verify_google_adk_adapter",
+        app_name="validate_google_adk_scalekit_tools_adapter",
         user_id=IDENTIFIER,
-        session_id="verify_session_001",
+        session_id="validate_session_001",
     )
     runner = Runner(
         agent=gmail_agent,
-        app_name="verify_google_adk_adapter",
+        app_name="validate_google_adk_scalekit_tools_adapter",
         session_service=session_service,
     )
     content = types.Content(

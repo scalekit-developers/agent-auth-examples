@@ -1,5 +1,5 @@
 """
-verify_optimized_tools.py
+validate_scalekit_optimized_tools_flow.py
 ---------------------------
 Verifies the code snippets in scalekit-optimized-tools.mdx, steps 1–6.
 
@@ -12,7 +12,7 @@ Checkpoints:
   ✅ Step 6: Anthropic LLM loop via LiteLLM proxy completes with at least one tool_use
 
 Run (from repo root):
-    python python/verify_optimized_tools.py
+    python python/validate_scalekit_optimized_tools_flow.py
 
 Required env vars (.env at repo root):
     SCALEKIT_ENVIRONMENT_URL  SCALEKIT_CLIENT_ID  SCALEKIT_CLIENT_SECRET

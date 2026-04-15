@@ -22,11 +22,11 @@ Use these scripts when you want to test the implementation shown in `src/content
 
 | Language | Scope | File |
 |----------|-------|------|
-| Python | Steps 1-6 verifier | [python/verify_optimized_tools.py](python/verify_optimized_tools.py) |
-| Python | Step 7 LangChain adapter | [python/verify_langchain_adapter.py](python/verify_langchain_adapter.py) |
-| Python | Step 7 Google ADK adapter | [python/verify_google_adk_adapter.py](python/verify_google_adk_adapter.py) |
-| JavaScript (Node) | Steps 1-6 verifier | [javascript/agents/verify-optimized-tools.js](javascript/agents/verify-optimized-tools.js) |
-| JavaScript (Node) | Step 7 Vercel AI SDK adapter | [javascript/agents/verify-vercel-ai-tools.js](javascript/agents/verify-vercel-ai-tools.js) |
+| Python | Steps 1-6 verifier | [python/validate_scalekit_optimized_tools_flow.py](python/validate_scalekit_optimized_tools_flow.py) |
+| Python | Step 7 LangChain adapter | [python/validate_langchain_scalekit_tools_adapter.py](python/validate_langchain_scalekit_tools_adapter.py) |
+| Python | Step 7 Google ADK adapter | [python/validate_google_adk_scalekit_tools_adapter.py](python/validate_google_adk_scalekit_tools_adapter.py) |
+| JavaScript (Node) | Steps 1-6 verifier | [javascript/agents/validate-scalekit-optimized-tools-flow.js](javascript/agents/validate-scalekit-optimized-tools-flow.js) |
+| JavaScript (Node) | Step 7 Vercel AI SDK adapter | [javascript/agents/validate-vercel-ai-scalekit-tools-adapter.js](javascript/agents/validate-vercel-ai-scalekit-tools-adapter.js) |
 
 ## Getting Started
 
@@ -95,13 +95,13 @@ Optional variables:
 ```bash
 # from repo root
 source python/.venv/bin/activate
-VERIFY_INTERACTIVE=false python python/verify_optimized_tools.py
-python python/verify_langchain_adapter.py
-python python/verify_google_adk_adapter.py
+VERIFY_INTERACTIVE=false python python/validate_scalekit_optimized_tools_flow.py
+python python/validate_langchain_scalekit_tools_adapter.py
+python python/validate_google_adk_scalekit_tools_adapter.py
 
 cd javascript
-VERIFY_INTERACTIVE=false node agents/verify-optimized-tools.js
-node agents/verify-vercel-ai-tools.js
+VERIFY_INTERACTIVE=false node agents/validate-scalekit-optimized-tools-flow.js
+node agents/validate-vercel-ai-scalekit-tools-adapter.js
 ```
 
 Set `VERIFY_INTERACTIVE=true` if you want the scripts to pause and wait for manual connector authorization.

@@ -1,5 +1,5 @@
 """
-verify_langchain_adapter.py
+validate_langchain_scalekit_tools_adapter.py
 ----------------------------
 Verifies the LangChain adapter section (step 7) in scalekit-optimized-tools.mdx.
 
@@ -8,7 +8,7 @@ builds an OpenAI tools agent pointed at a LiteLLM proxy (no direct provider keys
 and invokes it with a read-only Gmail prompt.
 
 Run (from repo root):
-    python python/verify_langchain_adapter.py
+    python python/validate_langchain_scalekit_tools_adapter.py
 
 Required env vars (.env at repo root):
     SCALEKIT_ENVIRONMENT_URL  SCALEKIT_CLIENT_ID  SCALEKIT_CLIENT_SECRET

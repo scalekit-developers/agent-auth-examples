@@ -1,5 +1,5 @@
 /**
- * verify-vercel-ai-tools.js
+ * validate-vercel-ai-scalekit-tools-adapter.js
  * --------------------------
  * Verifies step 7 of scalekit-optimized-tools.mdx using the Vercel AI SDK.
  *
@@ -8,7 +8,7 @@
  * LiteLLM proxy with @ai-sdk/openai-compatible.
  *
  * Run (from javascript/ directory):
- *   node agents/verify-vercel-ai-tools.js
+ *   node agents/validate-vercel-ai-scalekit-tools-adapter.js
  *
  * Required env vars (.env at repo root, loaded via path override):
  *   SCALEKIT_ENVIRONMENT_URL  SCALEKIT_CLIENT_ID  SCALEKIT_CLIENT_SECRET
