@@ -16,6 +16,18 @@ Scalekit Agent Auth handles the full OAuth lifecycle — authorization, token st
 | Python | Meeting Scheduler | Google Calendar + Gmail | [python/meeting_scheduler_agent.py](python/meeting_scheduler_agent.py) |
 | Python | Daily Briefing / Morning Digest | Gmail + Google Calendar | [python/daily_briefing_agent.py](python/daily_briefing_agent.py) |
 
+## Verification scripts for `scalekit-optimized-tools.mdx`
+
+Use these scripts when you want to test the implementation shown in `src/content/docs/agentkit/tools/scalekit-optimized-tools.mdx` end to end.
+
+| Language | Scope | File |
+|----------|-------|------|
+| Python | Steps 1-6 verifier | [python/verify_optimized_tools.py](python/verify_optimized_tools.py) |
+| Python | Step 7 LangChain adapter | [python/verify_langchain_adapter.py](python/verify_langchain_adapter.py) |
+| Python | Step 7 Google ADK adapter | [python/verify_google_adk_adapter.py](python/verify_google_adk_adapter.py) |
+| JavaScript (Node) | Steps 1-6 verifier | [javascript/agents/verify-optimized-tools.js](javascript/agents/verify-optimized-tools.js) |
+| JavaScript (Node) | Step 7 Vercel AI SDK adapter | [javascript/agents/verify-vercel-ai-tools.js](javascript/agents/verify-vercel-ai-tools.js) |
+
 ## Getting Started
 
 ### 1. Set up credentials
@@ -42,6 +54,89 @@ python meeting_scheduler_agent.py
 python daily_briefing_agent.py
 ```
 
+## Run the verification scripts
+
+### 1. Install dependencies (Python + Node)
+
+```bash
+# Python
+cd python
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# JavaScript
+cd ../javascript
+npm install
+```
+
+### 2. Configure environment
+
+The scripts read `.env` at the repo root.
+
+Required variables:
+
+- `SCALEKIT_ENVIRONMENT_URL`
+- `SCALEKIT_CLIENT_ID`
+- `SCALEKIT_CLIENT_SECRET`
+- `LITELLM_BASE_URL`
+- `LITELLM_API_KEY`
+
+Optional variables:
+
+- `LITELLM_MODEL` (default: `claude-sonnet-4-6`)
+- `VERIFY_INTERACTIVE` (`true` or `false`, default: `true`)
+- `GMAIL_CONNECTION_NAME` (default: `gmail`)
+- `GITHUB_CONNECTION_NAME` (default: `github-qkHFhMip`)
+- `LINEAR_CONNECTION_NAME` (default: `linear`)
+
+### 3. Run all verifiers
+
+```bash
+# from repo root
+source python/.venv/bin/activate
+VERIFY_INTERACTIVE=false python python/verify_optimized_tools.py
+python python/verify_langchain_adapter.py
+python python/verify_google_adk_adapter.py
+
+cd javascript
+VERIFY_INTERACTIVE=false node agents/verify-optimized-tools.js
+node agents/verify-vercel-ai-tools.js
+```
+
+Set `VERIFY_INTERACTIVE=true` if you want the scripts to pause and wait for manual connector authorization.
+
+## Understand verifier output
+
+Each script prints checkpoint lines:
+
+- `✅` Passed check
+- `⚠️` Expected runtime caveat (for example, connector not active, connection missing, or LiteLLM budget exceeded)
+- `❌` Failed check that needs investigation
+
+The Steps 1-6 verifiers map directly to doc sections:
+
+- **Step 1**: negative case for missing user/account
+- **Step 2**: SDK initialization
+- **Step 3**: tool discovery and schema shape
+- **Step 4**: connection status and authorization flow
+- **Step 5**: real tool execution across configured connectors
+- **Step 6**: LLM tool-calling loop via LiteLLM
+
+The Step 7 adapter scripts validate framework integrations:
+
+- Python: LangChain and Google ADK adapters
+- Node: Vercel AI SDK tool-calling adapter
+
+## Use verifier results with docs
+
+After running scripts, use output to update docs safely:
+
+- Confirm real tool names (for example `gmail_fetch_mails` vs `gmail_fetch_emails`)
+- Confirm schema fields (`max_results` / `maxResults` drift)
+- Confirm real error semantics for missing resources
+- Confirm connector names and env var names used in practice
+
 ## Dashboard Setup (required for all connectors)
 
 All scripts require a one-time connection setup in the Scalekit Dashboard before running.
@@ -53,6 +148,8 @@ All scripts require a one-time connection setup in the Scalekit Dashboard before
 | Connector | Connection Name |
 |-----------|----------------|
 | Gmail | `gmail` |
+| GitHub | `github-qkHFhMip` |
+| Linear | `linear` |
 | Google Calendar | `googlecalendar` |
 
 4. Click **Save**
