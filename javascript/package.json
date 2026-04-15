@@ -2,6 +2,9 @@
   "type": "module",
   "dependencies": {
     "@scalekit-sdk/node": "^2.5.1",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "ai": "^4",
+    "@ai-sdk/openai-compatible": "^0.1",
+    "@anthropic-ai/sdk": "^0.30"
   }
 }
