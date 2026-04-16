@@ -10,6 +10,17 @@
 | [meeting_scheduler_agent.py](meeting_scheduler_agent.py) | Google Calendar + Gmail | Finds a free slot in the next 3 days, creates a calendar event, and drafts a confirmation email |
 | [daily_briefing_agent.py](daily_briefing_agent.py) | Gmail + Google Calendar | Prints a morning digest of today's calendar events and unread emails |
 
+## Framework examples
+
+| Script | Framework |
+|--------|-----------|
+| [frameworks/quickstart/main.py](frameworks/quickstart/main.py) | Quickstart |
+| [frameworks/langchain/agent.py](frameworks/langchain/agent.py) | LangChain |
+| [frameworks/google-adk/agent.py](frameworks/google-adk/agent.py) | Google ADK |
+| [frameworks/anthropic/agent.py](frameworks/anthropic/agent.py) | Anthropic |
+| [frameworks/openai/agent.py](frameworks/openai/agent.py) | OpenAI-compatible |
+| [frameworks/crewai/agent.py](frameworks/crewai/agent.py) | CrewAI |
+
 ## Setup
 
 **1. Create and activate a virtual environment:**

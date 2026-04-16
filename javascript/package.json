@@ -1,10 +1,24 @@
 {
   "type": "module",
+  "scripts": {
+    "framework:quickstart": "tsx frameworks/quickstart/main.ts",
+    "framework:anthropic": "tsx frameworks/anthropic/agent.ts",
+    "framework:openai": "tsx frameworks/openai/agent.ts",
+    "framework:vercel-ai": "tsx frameworks/vercel-ai/agent.ts",
+    "framework:mastra": "tsx frameworks/mastra/agent.ts"
+  },
   "dependencies": {
+    "@ai-sdk/openai-compatible": "^2.0.41",
+    "@anthropic-ai/sdk": "^0.90.0",
+    "@mastra/core": "^1.25.0",
+    "@mastra/mcp": "^1.5.0",
     "@scalekit-sdk/node": "^2.5.1",
-    "dotenv": "^16.4.5",
-    "ai": "^4",
-    "@ai-sdk/openai-compatible": "^0.1",
-    "@anthropic-ai/sdk": "^0.30"
+    "ai": "^6.0.165",
+    "dotenv": "^17.4.2",
+    "openai": "^6.34.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
   }
 }
