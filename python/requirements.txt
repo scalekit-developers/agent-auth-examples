@@ -6,3 +6,7 @@ langchain
 langchain-openai
 google-adk
 litellm
+openai
+protobuf
+crewai
+crewai-tools

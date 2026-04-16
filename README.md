@@ -16,6 +16,31 @@ Scalekit Agent Auth handles the full OAuth lifecycle — authorization, token st
 | Python | Meeting Scheduler | Google Calendar + Gmail | [python/meeting_scheduler_agent.py](python/meeting_scheduler_agent.py) |
 | Python | Daily Briefing / Morning Digest | Gmail + Google Calendar | [python/daily_briefing_agent.py](python/daily_briefing_agent.py) |
 
+## Framework AgentKit Examples
+
+These examples are the framework-oriented AgentKit samples migrated from the docs repo so they are versioned and runnable here.
+
+### Python frameworks
+
+| Framework | File |
+|----------|------|
+| Quickstart | [python/frameworks/quickstart/main.py](python/frameworks/quickstart/main.py) |
+| LangChain | [python/frameworks/langchain/agent.py](python/frameworks/langchain/agent.py) |
+| Google ADK | [python/frameworks/google-adk/agent.py](python/frameworks/google-adk/agent.py) |
+| Anthropic | [python/frameworks/anthropic/agent.py](python/frameworks/anthropic/agent.py) |
+| OpenAI-compatible | [python/frameworks/openai/agent.py](python/frameworks/openai/agent.py) |
+| CrewAI | [python/frameworks/crewai/agent.py](python/frameworks/crewai/agent.py) |
+
+### JavaScript / TypeScript frameworks
+
+| Framework | File |
+|----------|------|
+| Quickstart | [javascript/frameworks/quickstart/main.ts](javascript/frameworks/quickstart/main.ts) |
+| Anthropic | [javascript/frameworks/anthropic/agent.ts](javascript/frameworks/anthropic/agent.ts) |
+| OpenAI-compatible | [javascript/frameworks/openai/agent.ts](javascript/frameworks/openai/agent.ts) |
+| Vercel AI SDK | [javascript/frameworks/vercel-ai/agent.ts](javascript/frameworks/vercel-ai/agent.ts) |
+| Mastra (MCP) | [javascript/frameworks/mastra/agent.ts](javascript/frameworks/mastra/agent.ts) |
+
 ## Example scripts for `scalekit-optimized-tools.mdx`
 
 Use these scripts when you want to test the implementation shown in `src/content/docs/agentkit/tools/scalekit-optimized-tools.mdx` end to end.
@@ -89,6 +114,11 @@ Optional variables:
 - `GMAIL_CONNECTION_NAME` (default: `gmail`)
 - `GITHUB_CONNECTION_NAME` (default: `github-qkHFhMip`)
 - `LINEAR_CONNECTION_NAME` (default: `linear`)
+- `OPENAI_BASE_URL` / `OPENAI_API_KEY` / `OPENAI_MODEL` (OpenAI-compatible, Vercel AI, Mastra examples)
+- `ANTHROPIC_BASE_URL` / `ANTHROPIC_API_KEY` / `ANTHROPIC_MODEL` (Anthropic examples)
+- `SCALEKIT_MCP_URL` (Mastra example)
+- `SCALEKIT_MCP_CONFIG_NAME` (CrewAI example, default: `gmail-user-tools`)
+- `GOOGLE_ADK_MODEL` (Google ADK example, default: `gemini-2.0-flash`)
 
 ### 3. Run all scripts
 
@@ -105,6 +135,42 @@ node agents/vercel-ai-scalekit-tools-agent.js
 ```
 
 Set `VERIFY_INTERACTIVE=true` if you want the scripts to pause and wait for manual connector authorization.
+
+## Run framework examples
+
+Install dependencies first:
+
+```bash
+# Python
+cd python
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# JavaScript
+cd ../javascript
+npm install
+cd ..
+```
+
+Then run any framework example from the repository root:
+
+```bash
+# Python
+python python/frameworks/quickstart/main.py
+python python/frameworks/langchain/agent.py
+python python/frameworks/google-adk/agent.py
+python python/frameworks/anthropic/agent.py
+python python/frameworks/openai/agent.py
+python python/frameworks/crewai/agent.py
+
+# JavaScript / TypeScript
+npx tsx javascript/frameworks/quickstart/main.ts
+npx tsx javascript/frameworks/anthropic/agent.ts
+npx tsx javascript/frameworks/openai/agent.ts
+npx tsx javascript/frameworks/vercel-ai/agent.ts
+npx tsx javascript/frameworks/mastra/agent.ts
+```
 
 ## Understand script output
 
