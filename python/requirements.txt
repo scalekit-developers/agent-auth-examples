@@ -4,6 +4,7 @@ requests
 anthropic
 langchain
 langchain-openai
+langsmith
 google-adk
 litellm
 openai

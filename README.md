@@ -26,6 +26,13 @@ These examples are the framework-oriented AgentKit samples migrated from the doc
 |----------|------|
 | Quickstart | [python/frameworks/quickstart/main.py](python/frameworks/quickstart/main.py) |
 | LangChain | [python/frameworks/langchain/agent.py](python/frameworks/langchain/agent.py) |
+| LangChain + LangSmith | [python/frameworks/langchain/langsmith_tracing.py](python/frameworks/langchain/langsmith_tracing.py) |
+
+#### LangSmith trace output
+
+Scalekit tool calls appear as native tool spans in LangSmith alongside LLM calls:
+
+![LangSmith trace showing Scalekit gmail_fetch_mails tool call](python/frameworks/langchain/images/langsmith-trace.png)
 | Google ADK | [python/frameworks/google-adk/agent.py](python/frameworks/google-adk/agent.py) |
 | Anthropic | [python/frameworks/anthropic/agent.py](python/frameworks/anthropic/agent.py) |
 | OpenAI-compatible | [python/frameworks/openai/agent.py](python/frameworks/openai/agent.py) |
