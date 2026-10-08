@@ -6,7 +6,7 @@ This repository hosts examples of the agent auth capabilities of Scalekit.
 
 ## What is Agent Auth?
 
-Scalekit Agent Auth handles the full OAuth lifecycle — authorization, token storage, and automatic refresh — so AI agents can act on behalf of users in Gmail, Google Calendar, Slack, Notion, and other connectors.
+Scalekit provides auth and actions on behalf of users, with 500+ connectors and 20,000+ tools. These examples show the OAuth lifecycle: authorization, token storage, and automatic refresh.
 
 ## Examples
 
